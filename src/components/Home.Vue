@@ -8,15 +8,17 @@
           <hr class="my-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce consectetur velit id felis dictum, sed hendrerit lorem faucibus. In molestie nibh ante, vel molestie nibh posuere ac. Phasellus a lectus commodo, ornare mauris sit amet, vestibulum ante. Suspendisse vitae sollicitudin felis. Etiam lacinia ligula sed eros maximus tempus. Etiam vestibulum malesuada massa, et rhoncus nulla ullamcorper quis. Praesent leo ipsum, finibus quis condimentum quis, efficitur et dui. Etiam sapien ante, auctor at leo at, rhoncus imperdiet turpis.</p>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget sapien sed ante dapibus ultrices a eu augue. Morbi et nunc quis nibh gravida pulvinar non sit amet elit. Aenean ut volutpat augue, a blandit urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin at tellus tempus, lobortis purus in, dignissim ligula. Sed tristique velit lorem, ac rutrum tortor egestas at. Nulla non erat id quam vestibulum tristique sit amet vehicula odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus pulvinar interdum nunc nec tempor. Fusce sapien urna, mollis in dolor a, mattis egestas metus. Suspendisse potenti.</p>
-
-          <p>
-            Mauris ultrices elit eget lectus interdum, non maximus magna vestibulum. Maecenas nec velit non ante ultrices convallis. Duis eu sapien dictum, venenatis nunc eu, interdum odio. Vestibulum hendrerit nisi at elit venenatis, sed efficitur eros tincidunt. Donec eleifend tincidunt mi, ut consequat erat vestibulum id. Sed sit amet purus eu nibh tincidunt varius et vitae lorem. Maecenas justo erat, faucibus vitae metus vel, consequat ultrices neque. Etiam a imperdiet leo, nec sagittis ex. Integer mi felis, finibus et eleifend at, feugiat rhoncus sapien. Curabitur imperdiet, tellus sit amet tempor tristique, turpis tortor ultricies risus, in euismod magna enim non ex.
-          </p>
+          <div id="weatherApp">
+            <form v-on:submit.prevent="getWeather">
+              <p><input type="text" name="location" v-model="location"></p><p>
+                <button class="btn btn-primary">Search</button>
+                </p>
+            </form>
+          </div>
 
           <p class="lead">
+            <div v-if="displayWeather">{{weather.name}}</div>
 
-                <router-link class="btn btn-primary btn-lg" to="/about"><a>Read More</a> </router-link>
 
           </p>
       </div>
@@ -26,6 +28,32 @@
 </template>
 
 <script>
+
+export default {
+
+  data: function() {
+    return{
+      location: '',
+      apiKey: 'f0ced33377e24b11971f522c34db7be4',
+      weather: [],
+      displayWeather: false
+    }
+  },
+
+  methods: {
+    getWeather: function()
+    {
+        return this.$http.get('http://api.openweathermap.org/data/2.5/weather?q='+ this.location +'&appid=' + this.apiKey).then((response) => {
+            this.weather = response.body;
+            this.displayWeather = true
+        }, (response) => {
+            this.weather = [];
+            this.displayWeather = false
+        });
+    }
+  }
+
+}
 
 
 </script>
