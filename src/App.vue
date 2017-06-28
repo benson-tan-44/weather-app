@@ -1,7 +1,6 @@
 <template>
   <div>
     <app-header></app-header>
-
       <transition name="slide" mode="out-in">
         <router-view>test</router-view>
       </transition>

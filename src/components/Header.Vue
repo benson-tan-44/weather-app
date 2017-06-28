@@ -3,17 +3,12 @@
   <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <router-link class="navbar-brand" to="/">
-        <img class="img-responsive" src="../assets/logo.png">
-      </router-link>
+
+        <h1 class="display-3">Custom Weather App</h1>
+
     </div>
 
-    <div class="navbar-collapse">
-      <ul class="nav navbar-nav">
-        <router-link to="/about" activeClass="active" tag="li"><a>About Us</a></router-link>
-        <router-link to="/services" activeClass="active" tag="li"><a>Services</a></router-link>
-        <router-link to="/contact" activeClass="active" tag="li"><a>Contact</a></router-link>
-      </ul>
+
 
 
 
@@ -31,9 +26,14 @@
 
 <style scoped>
 
-div {
+div, h1 {
   font-family: 'Lato', sans-serif;
   text-transform:uppercase;
+}
+
+h1{
+  text-align:center;
+  color:white;
 }
 
 
