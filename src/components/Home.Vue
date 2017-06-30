@@ -18,9 +18,11 @@
 
           <p class="lead">
             <div v-if="displayWeather">
-            <div>{{weather.name}}</div>
-            <div>{{weather.coord}}</div>
-            <div>{{weather.wind}}</div>
+            <div>Location: {{weather.name}}</div>
+            <div>Coordinates: {{weather.coord}}</div>
+            <div>Wind: {{weather.wind}}</div>
+            <div>Temperature: {{weather.main.temp}}</div>
+            <div>Description: {{weather.weather[0].description}}</div>
             </div>
 
 

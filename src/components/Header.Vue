@@ -33,7 +33,7 @@ div, h1 {
 
 h1{
   text-align:center;
-  color:white;
+  color:black;
 }
 
 
@@ -44,7 +44,7 @@ h1{
 }
 
 .navbar-default {
-    background-color: black;
+    background-color: #f9c700;
     border:none;
 }
 

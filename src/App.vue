@@ -89,17 +89,23 @@ body{
 .btn{
   text-transform:uppercase;
   font-size:12px;
-  background: #4d5d71;
+  background: #f9c700;
   border-radius:0px;
+
 }
 
 .btn:hover, .btn:focus {
   background: #2e3743;
+}
 
+.btn-primary{
+  border:0px;
+  color:black;
 }
 
 .btn a{
   text-decoration:none;
+
 }
 
 .panel-heading{
