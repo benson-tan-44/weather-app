@@ -21,7 +21,7 @@
             <div>Location: {{weather.name}}</div>
             <div>Coordinates: {{weather.coord}}</div>
             <div>Wind: {{weather.wind}}</div>
-            <div>Temperature: {{weather.main.temp}}</div>
+            <div>Temperature: {{ Math.floor(weather.main.temp) }}</div>
             <div>Description: {{weather.weather[0].description}}</div>
             </div>
 
@@ -47,13 +47,15 @@ export default {
       weather: [],
       displayWeather: false,
       inputted: false
+
     }
   },
+
 
   methods: {
     getWeather: function()
     {
-        return this.$http.get('http://api.openweathermap.org/data/2.5/weather?q='+ this.location +'&appid=' + this.apiKey).then((response) => {
+        return this.$http.get('http://api.openweathermap.org/data/2.5/weather?q='+ this.location + '&units=imperial' +'&appid=' + this.apiKey).then((response) => {
             this.weather = response.body;
             this.displayWeather = true;
         }, (response) => {
