@@ -21,8 +21,9 @@
             <div>Location: {{weather.name}}</div>
             <div>Coordinates: {{weather.coord}}</div>
             <div>Wind: {{weather.wind}}</div>
-            <div>Temperature: {{ Math.floor(weather.main.temp) }}</div>
+            <div>Temperature: {{ Math.floor(weather.main.temp) }}° F</div>
             <div>Description: {{weather.weather[0].description}}</div>
+            <div><img :src="weatherIcon" /></div>
             </div>
 
 
@@ -46,11 +47,16 @@ export default {
       apiKey: 'f0ced33377e24b11971f522c34db7be4',
       weather: [],
       displayWeather: false,
-      inputted: false
-
+      inputted: false,
+      imageLink: 'http://openweathermap.org/img/w/'
     }
   },
 
+  computed: {
+    weatherIcon() {
+      return this.imageLink + this.weather.weather[0].icon + '.png';
+    }
+  },
 
   methods: {
     getWeather: function()

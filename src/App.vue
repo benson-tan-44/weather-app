@@ -23,6 +23,7 @@ export default {
 
 <style>
 
+
 .slide-enter-active {
   animation: slide-in 200ms ease-out forwards;
 }

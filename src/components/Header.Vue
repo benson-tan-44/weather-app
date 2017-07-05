@@ -2,11 +2,7 @@
 
   <nav class="navbar navbar-default">
   <div class="container">
-    <div class="navbar-header">
 
-        <h1 class="display-3">Custom Weather App</h1>
-
-    </div>
 
 
 
@@ -44,7 +40,7 @@ h1{
 }
 
 .navbar-default {
-    background-color: #f9c700;
+    background-color: #171C25;
     border:none;
 }
 
