@@ -79,7 +79,7 @@ body{
   background: #171c25;
   font-family:'lato', sans-serif;
   font-size:20px;
-  margin-bottom: 60px;
+  margin-bottom: 120px;
 }
 
 .lead{
@@ -150,5 +150,8 @@ h1{
   text-transform:uppercase;
 }
 
+hr{
+  border-color:#ccc
+}
 
 </style>

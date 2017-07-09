@@ -17,14 +17,46 @@
           </div>
 
           <p class="lead">
+            <!--
             <div v-if="displayWeather">
             <div>Location: {{weather.name}}</div>
             <div>Coordinates: {{weather.coord}}</div>
             <div>Wind: {{weather.wind}}</div>
             <div>Temperature: {{ Math.floor(weather.main.temp) }}° F</div>
-            <div>Description: {{weather.weather[0].description}}</div>
-            <div><img :src="weatherIcon" /></div>
+            <div>Description: <img :src="weatherIcon" /> {{weather.weather[0].description}} </div>
             </div>
+          -->
+          <div v-if="displayWeather">
+            <div class="loc">{{location}}</div>
+            <hr />
+            <div><b>{{weather.list[0].dt_txt | formatDate  }}</b></div>
+            <div>Current Temperature: {{weather.list[0].main.temp}} ° F </div>
+            <div>Wind Speed: {{weather.list[0].wind.speed}} MPH  </div>
+            <div>Description: <img :src="weatherIcon" /> {{weather.list[0].weather[0].description}} </div>
+            <hr/>
+            <div><b>{{weather.list[5].dt_txt | formatDate}}</b></div>
+            <div>Current Temperature: {{weather.list[5].main.temp}} ° F </div>
+            <div>Wind Speed: {{weather.list[5].wind.speed}} MPH  </div>
+            <div>Description: <img :src="weatherIcon" /> {{weather.list[5].weather[0].description}} </div>
+            <hr />
+            <div><b>{{weather.list[10].dt_txt | formatDate  }}</b></div>
+            <div>Current Temperature: {{weather.list[10].main.temp}} ° F </div>
+            <div>Wind Speed: {{weather.list[10].wind.speed}} MPH  </div>
+            <div>Description: <img :src="weatherIcon" /> {{weather.list[10].weather[0].description}} </div>
+            <hr />
+            <div><b>{{weather.list[18].dt_txt | formatDate  }}</b></div>
+            <div>Current Temperature: {{weather.list[18].main.temp}} ° F </div>
+            <div>Wind Speed: {{weather.list[18].wind.speed}} MPH  </div>
+            <div>Description: <img :src="weatherIcon" /> {{weather.list[18].weather[0].description}} </div>
+            <hr />
+            <div><b>{{weather.list[28].dt_txt | formatDate  }}</b></div>
+            <div>Current Temperature: {{weather.list[28].main.temp}} ° F </div>
+            <div>Wind Speed: {{weather.list[28].wind.speed}} MPH  </div>
+            <div>Description: <img :src="weatherIcon" /> {{weather.list[28].weather[0].description}} </div>
+
+          </hr/>
+
+          </div>
 
 
             <div v-if="!displayWeather && inputted">Invalid Location</div>
@@ -54,14 +86,15 @@ export default {
 
   computed: {
     weatherIcon() {
-      return this.imageLink + this.weather.weather[0].icon + '.png';
+      return this.imageLink + this.weather.list[0].weather[0].icon + '.png';
     }
+
   },
 
   methods: {
     getWeather: function()
     {
-        return this.$http.get('http://api.openweathermap.org/data/2.5/weather?q='+ this.location + '&units=imperial' +'&appid=' + this.apiKey).then((response) => {
+        return this.$http.get('http://api.openweathermap.org/data/2.5/forecast?q='+ this.location + '&units=imperial' +'&appid=' + this.apiKey).then((response) => {
             this.weather = response.body;
             this.displayWeather = true;
         }, (response) => {
@@ -73,11 +106,22 @@ export default {
     }
   }
 
+
+
 }
+
+
+
 
 
 </script>
 
 <style>
+
+.loc{
+  font-size:32px;
+  text-transform:uppercase;
+  font-weight:300;
+}
 
 </style>
