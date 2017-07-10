@@ -26,35 +26,103 @@
             <div>Description: <img :src="weatherIcon" /> {{weather.weather[0].description}} </div>
             </div>
           -->
-          <div v-if="displayWeather">
-            <div class="loc">{{location}}</div>
-            <hr />
-            <div><b>{{weather.list[0].dt_txt | formatDate  }}</b></div>
-            <div>Current Temperature: {{weather.list[0].main.temp}} ° F </div>
-            <div>Wind Speed: {{weather.list[0].wind.speed}} MPH  </div>
-            <div>Description: <img :src="weatherIcon" /> {{weather.list[0].weather[0].description}} </div>
-            <hr/>
-            <div><b>{{weather.list[5].dt_txt | formatDate}}</b></div>
-            <div>Current Temperature: {{weather.list[5].main.temp}} ° F </div>
-            <div>Wind Speed: {{weather.list[5].wind.speed}} MPH  </div>
-            <div>Description: <img :src="weatherIcon" /> {{weather.list[5].weather[0].description}} </div>
-            <hr />
-            <div><b>{{weather.list[10].dt_txt | formatDate  }}</b></div>
-            <div>Current Temperature: {{weather.list[10].main.temp}} ° F </div>
-            <div>Wind Speed: {{weather.list[10].wind.speed}} MPH  </div>
-            <div>Description: <img :src="weatherIcon" /> {{weather.list[10].weather[0].description}} </div>
-            <hr />
-            <div><b>{{weather.list[18].dt_txt | formatDate  }}</b></div>
-            <div>Current Temperature: {{weather.list[18].main.temp}} ° F </div>
-            <div>Wind Speed: {{weather.list[18].wind.speed}} MPH  </div>
-            <div>Description: <img :src="weatherIcon" /> {{weather.list[18].weather[0].description}} </div>
-            <hr />
-            <div><b>{{weather.list[28].dt_txt | formatDate  }}</b></div>
-            <div>Current Temperature: {{weather.list[28].main.temp}} ° F </div>
-            <div>Wind Speed: {{weather.list[28].wind.speed}} MPH  </div>
-            <div>Description: <img :src="weatherIcon" /> {{weather.list[28].weather[0].description}} </div>
 
-          </hr/>
+
+
+          <div v-if="displayWeather">
+
+            <div>{{weather.city.name}}</div>
+
+
+            <hr />
+
+            <div class="row no-margin">
+              <div class="col-md-4">
+
+                <div class="panel panel-warning">
+                    <div class="panel-heading"><div><b>{{weather.list[0].dt_txt | formatDate  }}</b></div></div>
+                      <div class="panel-body">
+                        <div>Temperature: {{weather.list[0].main.temp}} ° F </div>
+                        <div>Wind Speed: {{weather.list[0].wind.speed}} MPH  </div>
+                        <div>Humidity: {{weather.list[0].main.humidity}} %</div>
+                        <div>Info: <img :src="weatherIcon1" /> {{weather.list[0].weather[0].description}} </div>
+                </div>
+              </div>
+
+
+              </div>
+                <div class="col-md-4">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                  <div><b>{{weather.list[8].dt_txt | formatDate}}</b></div>
+                  </div>
+
+                  <div class="panel-body">
+                  <div>Temperature: {{weather.list[6].main.temp}} ° F </div>
+                  <div>Wind Speed: {{weather.list[6].wind.speed}} MPH  </div>
+                  <div>Humidity: {{weather.list[6].main.humidity}} %</div>
+                  <div>Info: <img :src="weatherIcon2" /> {{weather.list[6].weather[0].description}} </div>
+                  </div>
+
+                    </div>
+
+                </div>
+
+                    <div class="col-md-4">
+                      <div class="panel panel-default">
+
+                      <div class="panel-heading"><div><b>{{weather.list[18].dt_txt | formatDate  }}</b></div></div>
+                        <div class="panel-body">
+                      <div>Temperature: {{weather.list[10].main.temp}} ° F </div>
+                      <div>Wind Speed: {{weather.list[10].wind.speed}} MPH  </div>
+                      <div>Humidity: {{weather.list[10].main.humidity}} %</div>
+                      <div>Info: <img :src="weatherIcon3" /> {{weather.list[10].weather[0].description}} </div>
+                    </div>
+                    </div>
+
+
+                  </div>
+
+            </div>
+
+
+
+
+
+
+            <hr />
+
+            <div class="row no-margin">
+              <div class="col-md-4">
+                  <div class="panel panel-default">
+                <div class="panel-heading"><div><b>{{weather.list[28].dt_txt | formatDate  }}</b></div></div>
+                  <div class="panel-body">
+                <div>Temperature: {{weather.list[18].main.temp}} ° F </div>
+                <div>Wind Speed: {{weather.list[18].wind.speed}} MPH  </div>
+                <div>Humidity: {{weather.list[18].main.humidity}} %</div>
+                <div>Info: <img :src="weatherIcon4" /> {{weather.list[18].weather[0].description}} </div>
+              </div>
+
+              </div>
+              </div>
+
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                  <div class="panel-heading"><div><b>{{weather.list[36].dt_txt | formatDate  }}</b></div></div>
+                  <div class="panel-body">
+                <div>Temperature: {{weather.list[28].main.temp}} ° F </div>
+                <div>Wind Speed: {{weather.list[28].wind.speed}} MPH  </div>
+                <div>Humidity: {{weather.list[28].main.humidity}} %</div>
+                <div>Info: <img :src="weatherIcon5" /> {{weather.list[28].weather[0].description}} </div>
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+
+
 
           </div>
 
@@ -85,9 +153,22 @@ export default {
   },
 
   computed: {
-    weatherIcon() {
+    weatherIcon1() {
       return this.imageLink + this.weather.list[0].weather[0].icon + '.png';
+    },
+    weatherIcon2() {
+      return this.imageLink + this.weather.list[6].weather[0].icon + '.png';
+    },
+    weatherIcon3() {
+      return this.imageLink + this.weather.list[10].weather[0].icon + '.png';
+    },
+    weatherIcon4() {
+      return this.imageLink + this.weather.list[18].weather[0].icon + '.png';
+    },
+    weatherIcon5() {
+      return this.imageLink + this.weather.list[28].weather[0].icon + '.png';
     }
+
 
   },
 
@@ -123,5 +204,10 @@ export default {
   text-transform:uppercase;
   font-weight:300;
 }
+
+.no-margin{
+  margin:0px;
+}
+
 
 </style>
